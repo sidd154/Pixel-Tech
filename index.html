@@ -262,22 +262,10 @@
       z-index: 5;
     }
 
-    @media (max-width: 1024px) {
-      .character-canvas {
-        transform: scale(0.85);
-        transform-origin: center center;
-      }
-    }
+    /* Mobile Character Canvas overrides: No scale transforms to guarantee razor-sharp legibility! */
     @media (max-width: 768px) {
       .character-canvas {
-        transform: scale(0.65);
-        transform-origin: center center;
-      }
-    }
-    @media (max-width: 480px) {
-      .character-canvas {
-        transform: scale(0.5);
-        transform-origin: center center;
+        transform: none !important;
       }
     }
 
@@ -296,12 +284,7 @@
       height: var(--char-size);
     }
 
-    @media (max-width: 768px) {
-      .char-node:not(.node-ai-core) {
-        width: var(--char-size-mobile);
-        height: var(--char-size-mobile);
-      }
-    }
+
 
     /* blend-mode multiply completely strips illustration white boundaries */
     .char-node img {
@@ -338,9 +321,69 @@
     }
 
     @media (max-width: 768px) {
+      /* Consolidate standard nodes scaling */
+      .char-node:not(.node-ai-core) {
+        width: var(--char-size-mobile);
+        height: var(--char-size-mobile);
+      }
+
+      /* Consolidate AI Core centerpiece scaling */
       .node-ai-core {
         width: var(--ai-core-size-mobile);
         height: var(--ai-core-size-mobile);
+      }
+
+      /* Make swipe handle highly tactile on touch screens */
+      .swipe-handle {
+        width: 48px !important;
+        height: 48px !important;
+        border: 2px solid var(--color-orange) !important;
+      }
+
+      /* Center and optimize compare instructions at the bottom of the canvas */
+      .compare-instruction {
+        display: block !important;
+        bottom: 15px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 0.65rem !important;
+        width: 100% !important;
+        text-align: center !important;
+        letter-spacing: 0.06em !important;
+        color: #777 !important;
+      }
+
+      /* Compact, legibility-optimized mobile speech bubbles */
+      .speech-bubble {
+        width: 125px !important;
+        padding: 6px 8px !important;
+        font-size: 0.72rem !important;
+        border-radius: 6px !important;
+      }
+
+      /* Left-aligned nodes (Doctor, Agent) - align bubble to left screen edge */
+      .bubble-doctor { left: 0% !important; transform: none !important; }
+      .bubble-doctor::after { left: 30% !important; }
+      .bubble-doctor::before { left: 30% !important; }
+
+      .bubble-agent { left: 0% !important; transform: none !important; }
+      .bubble-agent::after { left: 30% !important; }
+      .bubble-agent::before { left: 30% !important; }
+
+      /* Right-aligned nodes (Banker, Worker) - align bubble to right screen edge */
+      .bubble-banker { right: 0% !important; left: auto !important; transform: none !important; }
+      .bubble-banker::after { left: 70% !important; }
+      .bubble-banker::before { left: 70% !important; }
+
+      .bubble-worker { right: 0% !important; left: auto !important; transform: none !important; }
+      .bubble-worker::after { left: 70% !important; }
+      .bubble-worker::before { left: 70% !important; }
+
+      /* Highly readable compact mindmap labels */
+      .solution-label {
+        font-size: 0.58rem !important;
+        padding: 3px 8px !important;
+        border-radius: 12px !important;
       }
     }
 
@@ -529,11 +572,7 @@
       pointer-events: none;
     }
 
-    @media (max-width: 768px) {
-      .compare-instruction {
-        display: none;
-      }
-    }
+
 
     /* ==========================================================================
        4. SEAMLESS INTERACTIVE SWIPE DIVIDER & HANDLE
@@ -1212,7 +1251,7 @@
         </div>
       </div>
 
-      <div class="compare-instruction">Move mouse horizontally to explore before / after</div>
+      <div class="compare-instruction">Swipe or drag to explore before / after</div>
 
     </div>
   </section>
