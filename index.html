@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Tech | Premium AI Solutions Architect</title>
+  <meta name="description" content="Pixel Tech connects the dots. Building intelligent AI systems for human problems. Minimalist luxury solutions.">
+  
+  <!-- Typography & Fonts (Modern Geometric Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & TOKENS (ULTRA-MINIMALIST)
+       ========================================================================== */
+    :root {
+      /* Colors */
+      --color-white: #FFFFFF;
+      --color-black: #0A0A0A;
+      --color-navy: #162033;
+      --color-orange: #FF6B2B;
+      --color-blue-light: #C0D0FF;
+      --color-grey-light: #F9F9F9;
+      --color-grey-border: #EAEAEA;
+      --color-grey-dark: #121212;
+
+      /* Typography */
+      --font-body: 'Inter', sans-serif;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+
+      /* Transitions */
+      --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Layout Settings (Perfect compact sizing to prevent overlaps) */
+      --swipe-progress: 48%;
+      --char-size: 180px; /* Make the pictures bigger */
+      --char-size-mobile: 110px;
+      --ai-core-size: 210px; /* Make the centerpiece bigger */
+      --ai-core-size-mobile: 130px;
+      
+      --bubble-font-size: 0.8rem;
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-white);
+      color: var(--color-black);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: var(--color-white);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 800; /* Extra bold geometric styling */
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #444;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, select, input {
+      font-family: inherit;
+      outline: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+    }
+
+    /* ==========================================================================
+       2. NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-grey-border);
+      height: 70px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 800; /* Bolder text to match the new logo style */
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      color: var(--color-navy);
+      transition: opacity 0.2s ease;
+    }
+
+    .logo:hover {
+      opacity: 0.85;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      position: relative;
+      padding: 4px 0;
+      color: #555;
+      transition: var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--color-black);
+    }
+
+    .nav-cta {
+      background-color: transparent;
+      color: var(--color-black);
+      padding: 8px 18px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--color-black);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .nav-cta:hover {
+      background-color: var(--color-black);
+      color: var(--color-white);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION (ISOLATED TITLE & CANVAS WRAPPER)
+       ========================================================================== */
+    .hero-section {
+      height: 100vh;
+      min-height: 680px;
+      position: relative;
+      background-color: var(--color-white);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding-top: 70px;
+    }
+
+    /* Architectural grid lines overlay beautifully */
+    .blueprint-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(10, 10, 10, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(10, 10, 10, 0.02) 1px, transparent 1px);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Canvas Wrapper (Full Viewport below navbar) */
+    .hero-canvas-wrapper {
+      height: calc(100vh - 70px);
+      position: relative;
+      width: 100%;
+      z-index: 2;
+      background-color: var(--color-white);
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide-2 {
+      z-index: 3;
+      background-color: var(--color-white);
+    }
+
+    .slide-1 {
+      z-index: 4;
+      background-color: var(--color-white);
+      clip-path: polygon(0 0, var(--swipe-progress) 0, var(--swipe-progress) 100%, 0 100%);
+      transition: clip-path 0.15s ease-out;
+    }
+
+    /* Character Canvas & Scale Down Engine */
+    .character-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @media (max-width: 1024px) {
+      .character-canvas {
+        transform: scale(0.85);
+        transform-origin: center center;
+      }
+    }
+    @media (max-width: 768px) {
+      .character-canvas {
+        transform: scale(0.65);
+        transform-origin: center center;
+      }
+    }
+    @media (max-width: 480px) {
+      .character-canvas {
+        transform: scale(0.5);
+        transform-origin: center center;
+      }
+    }
+
+    .char-node {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      background: transparent;
+    }
+
+    /* Sizing class configurations */
+    .char-node:not(.node-ai-core) {
+      width: var(--char-size);
+      height: var(--char-size);
+    }
+
+    @media (max-width: 768px) {
+      .char-node:not(.node-ai-core) {
+        width: var(--char-size-mobile);
+        height: var(--char-size-mobile);
+      }
+    }
+
+    /* blend-mode multiply completely strips illustration white boundaries */
+    .char-node img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.04));
+      background: transparent;
+    }
+
+    /* --- Slide 1: PROBLEMS / "BEFORE" (Chaos / Scattered / Asymmetric) --- */
+    .slide-1 .node-teacher { top: 20%; left: 48%; transform: translate(-50%, -50%); }
+    .slide-1 .node-doctor { top: 30%; left: 15%; transform: translate(-50%, -50%); }
+    .slide-1 .node-banker { top: 35%; left: 82%; transform: translate(-50%, -50%); }
+    .slide-1 .node-agent { top: 72%; left: 18%; transform: translate(-50%, -50%); }
+    .slide-1 .node-worker { top: 78%; left: 80%; transform: translate(-50%, -50%); }
+
+    /* --- Slide 2: SOLUTIONS / "AFTER" (Organised Mind Map Symmetrical Pentagon) --- */
+    .slide-2 .node-teacher { top: 16%; left: 50%; transform: translate(-50%, -50%); }
+    .slide-2 .node-doctor { top: 38%; left: 18%; transform: translate(-50%, -50%); }
+    .slide-2 .node-banker { top: 38%; left: 82%; transform: translate(-50%, -50%); }
+    .slide-2 .node-agent { top: 76%; left: 30%; transform: translate(-50%, -50%); }
+    .slide-2 .node-worker { top: 76%; left: 70%; transform: translate(-50%, -50%); }
+
+    /* Center AI Core sizing block */
+    .node-ai-core {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--ai-core-size);
+      height: var(--ai-core-size);
+      z-index: 20;
+    }
+
+    @media (max-width: 768px) {
+      .node-ai-core {
+        width: var(--ai-core-size-mobile);
+        height: var(--ai-core-size-mobile);
+      }
+    }
+
+    /* Speech Bubbles - Keep pure opaque solid white background */
+    .speech-bubble {
+      position: absolute;
+      background: var(--color-white);
+      border: 1px solid var(--color-black);
+      padding: 8px 12px;
+      font-size: var(--bubble-font-size);
+      font-weight: 400;
+      color: var(--color-black);
+      width: 165px;
+      text-align: center;
+      pointer-events: auto;
+      z-index: 50;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.06);
+    }
+
+    /* Teacher bubble placed at BOTTOM to completely avoid navbar overlaps */
+    .bubble-teacher {
+      top: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .bubble-teacher::after {
+      content: '';
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 0 7px 7px;
+      border-style: solid;
+      border-color: var(--color-black) transparent;
+    }
+    .bubble-teacher::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 0 6px 6px;
+      border-style: solid;
+      border-color: var(--color-white) transparent;
+      z-index: 1;
+    }
+
+    /* Outward positioning prevents character illustration overlaps */
+    .bubble-doctor { bottom: 115%; left: 15%; }
+    .bubble-banker { bottom: 115%; right: 15%; }
+    .bubble-agent { bottom: 115%; left: 15%; }
+    .bubble-worker { bottom: 115%; right: 15%; }
+
+    /* Standard upward indicators pointing straight to node centers */
+    .speech-bubble:not(.bubble-teacher)::after {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 7px 7px 0;
+      border-style: solid;
+      border-color: var(--color-black) transparent;
+    }
+
+    .speech-bubble:not(.bubble-teacher)::before {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px 6px 0;
+      border-style: solid;
+      border-color: var(--color-white) transparent;
+      z-index: 1;
+    }
+
+    /* Mindmap lines overlay */
+    .mindmap-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Solution Labels - Spaced dynamically to completely prevent overlaps */
+    .solution-label {
+      position: absolute;
+      background: var(--color-white);
+      border: 1px solid var(--color-orange);
+      color: var(--color-black);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    /* Spaced labels sitting perfectly along the connecting laser paths */
+    .label-teacher { top: 30%; left: 50%; }
+    .label-doctor { top: 44%; left: 34%; }
+    .label-banker { top: 44%; left: 66%; }
+    .label-agent { top: 63%; left: 40%; }
+    .label-worker { top: 63%; left: 60%; }
+
+    /* Central CTA Area */
+    .solution-cta-area {
+      position: absolute;
+      bottom: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      pointer-events: auto;
+    }
+
+    .btn-hero-cta {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+      border: none;
+      padding: 12px 28px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--color-black);
+      transition: var(--transition-fast);
+    }
+
+    .btn-hero-cta:hover {
+      background-color: var(--color-black);
+    }
+
+    /* Comparison Nudges & Instructions */
+    .swipe-nudge {
+      position: absolute;
+      bottom: 25px;
+      right: 30px;
+      z-index: 100;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-black);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: var(--transition-fast);
+      pointer-events: auto;
+    }
+
+    .swipe-nudge svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.25s ease;
+    }
+
+    .swipe-nudge:hover svg {
+      transform: translateX(4px);
+    }
+
+    .compare-instruction {
+      position: absolute;
+      bottom: 25px;
+      left: 30px;
+      z-index: 100;
+      font-size: 0.7rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #999;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .compare-instruction {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+       4. SEAMLESS INTERACTIVE SWIPE DIVIDER & HANDLE
+       ========================================================================== */
+    .swipe-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--swipe-progress);
+      width: 1px;
+      background-color: var(--color-orange);
+      z-index: 500;
+      pointer-events: none;
+      transition: left 0.15s ease-out; /* Smooth hover glide */
+    }
+
+    .swipe-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: ew-resize;
+      z-index: 501;
+      pointer-events: auto;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .swipe-handle:hover {
+      background-color: var(--color-orange);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    .swipe-handle svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--color-black);
+      transition: fill 0.2s ease;
+    }
+
+    .swipe-handle:hover svg {
+      fill: var(--color-white);
+    }
+
+    .is-dragging .slide-1,
+    .is-dragging .swipe-divider {
+      transition: none !important; /* Zero latency touch tracking */
+    }
+
+    .transition-active .slide-1,
+    .transition-active .swipe-divider {
+      transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  left 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    /* ==========================================================================
+       5. SECTION 2 — USE CASE CARDS (PERFECT BALANCED STACK)
+       ========================================================================== */
+    .use-cases-section {
+      background-color: var(--color-white);
+      padding: 110px 0;
+      border-top: 1px solid var(--color-grey-border);
+    }
+
+    .section-intro {
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+      color: var(--color-black);
+    }
+
+    .cards-stack-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Balanced Medium Sized Stacking Card */
+    .case-card {
+      position: sticky;
+      background: var(--color-white);
+      border: 1px solid var(--color-black);
+      border-left: 5px solid var(--color-orange);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      height: 200px;
+      transform-origin: center top;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.03);
+    }
+
+    /* Sticky increments stacking */
+    .case-card:nth-child(1) { top: 120px; z-index: 10; }
+    .case-card:nth-child(2) { top: 140px; z-index: 20; }
+    .case-card:nth-child(3) { top: 160px; z-index: 30; }
+    .case-card:nth-child(4) { top: 180px; z-index: 40; }
+    .case-card:nth-child(5) { top: 200px; z-index: 50; }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .card-number {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: #999;
+    }
+
+    .sector-pill {
+      border: 1px solid var(--color-orange);
+      color: var(--color-orange);
+      padding: 3px 10px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-metric {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--color-black);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .card-story {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #444;
+      line-height: 1.5;
+      max-width: 800px;
+    }
+
+    @media (max-width: 768px) {
+      .case-card {
+        height: auto;
+        min-height: 180px;
+        padding: 20px;
+      }
+      .case-card:nth-child(1) { top: 100px; }
+      .case-card:nth-child(2) { top: 125px; }
+      .case-card:nth-child(3) { top: 150px; }
+      .case-card:nth-child(4) { top: 175px; }
+      .case-card:nth-child(5) { top: 200px; }
+    }
+
+    /* ==========================================================================
+       6. SECTION 3 — CONTACT & FOOTER (CLEAN & MODERN)
+       ========================================================================== */
+    .contact-section {
+      background-color: var(--color-black);
+      color: var(--color-white);
+      padding: 120px 0 60px 0;
+      border-top: 1px solid var(--color-grey-dark);
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* Left-aligned vertical flow as per screenshot */
+      text-align: left;
+      margin-bottom: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .contact-tag {
+      color: var(--color-orange);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
+    .contact-title {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      color: var(--color-white);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .color-orange {
+      color: var(--color-orange);
+    }
+
+    .contact-desc {
+      color: #999;
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+
+    .cta-button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .btn-filled {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+      padding: 14px 28px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: 1px solid var(--color-orange);
+      border-radius: 9999px; /* Pill shape */
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .btn-filled:hover {
+      background-color: transparent;
+      color: var(--color-orange);
+    }
+
+    .btn-outlined {
+      background-color: transparent;
+      color: var(--color-white);
+      padding: 14px 28px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 9999px; /* Pill shape */
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .btn-outlined:hover {
+      border-color: var(--color-white);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Minimalist Premium Contact Form Grid */
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .form-group {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group-full {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 768px) {
+      .contact-form {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .form-group-full {
+        grid-column: span 1;
+      }
+    }
+
+    .form-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #999;
+      margin-bottom: 8px;
+      transition: var(--transition-fast);
+    }
+
+    .form-group:focus-within .form-label {
+      color: var(--color-orange);
+    }
+
+    .form-input {
+      background-color: var(--color-white);
+      border: 1px solid #EAEAEA;
+      color: var(--color-black);
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      transition: var(--transition-fast);
+      border-radius: 10px; /* Highly rounded corners */
+      width: 100%;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-input::placeholder {
+      color: #999;
+      opacity: 0.7;
+    }
+
+    .form-input:focus {
+      border-color: var(--color-orange);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 43, 0.15);
+    }
+
+    .form-select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .form-select {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      background-color: var(--color-white);
+      border: 1px solid #EAEAEA;
+      color: var(--color-black);
+      padding: 14px 40px 14px 20px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      border-radius: 10px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-select:focus {
+      border-color: var(--color-orange);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 43, 0.15);
+    }
+
+    .select-arrow {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      stroke: var(--color-black); /* Dark arrow for white backdrop */
+      transition: stroke 0.2s ease;
+    }
+
+    .form-select:focus + .select-arrow {
+      stroke: var(--color-orange);
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .btn-submit {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    .form-helper-text {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .btn-submit {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+      border: none;
+      padding: 14px 36px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 9999px; /* Pill shape */
+      cursor: pointer;
+      transition: var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+
+    /* Footer */
+    .footer-area {
+      border-top: 1px solid #1c1c1c;
+      margin-top: 60px;
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-text {
+      color: #555;
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid #222;
+      border-radius: 50%;
+      transition: var(--transition-fast);
+    }
+
+    .social-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--color-white);
+      transition: fill 0.2s ease;
+    }
+
+    .social-icon:hover {
+      border-color: var(--color-orange);
+      background-color: var(--color-orange);
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-area {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVBAR
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="10" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="2" y="13.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          
+          <rect x="5.5" y="6.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="5.5" y="10" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="5.5" y="13.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="5.5" y="17" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          
+          <rect x="9" y="3" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="9" y="6.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="9" y="10" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="9" y="13.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="9" y="17" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="9" y="20.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          
+          <rect x="12.5" y="3" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="12.5" y="6.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="12.5" y="10" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="12.5" y="13.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="12.5" y="17" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          
+          <rect x="16" y="4.8" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="16" y="8.3" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="16" y="11.8" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="16" y="15.3" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          
+          <rect x="19.5" y="6.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="19.5" y="10" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+          <rect x="19.5" y="13.5" width="2.5" height="2.5" rx="0.8" fill="#FF6B2B"/>
+        </svg>
+        <span>Pixel Tech</span>
+      </a>
+      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView();">Discovery Call</button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="blueprint-bg"></div>
+    
+    <!-- Whiteboard Interactive Canvas -->
+    <div class="hero-canvas-wrapper" id="swipeViewport">
+      
+      <!-- ==========================================================================
+           SLIDE 2: SOLUTIONS / "AFTER" (BACKGROUND UNDERLAY - FLAT TECH ART STYLE)
+           ========================================================================= -->
+      <div class="slide slide-2">
+        <!-- Connecting lines from AI Core centerpiece to outer solved modules -->
+        <svg class="mindmap-overlay" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connecting laser lines from AI Core centerpiece to solved outer nodes -->
+          <path d="M 50 50 L 50 16" stroke="#FF6B2B" stroke-width="0.35" stroke-dasharray="1 1"/>
+          <path d="M 50 50 L 18 38" stroke="#FF6B2B" stroke-width="0.35" stroke-dasharray="1 1"/>
+          <path d="M 50 50 L 82 38" stroke="#FF6B2B" stroke-width="0.35" stroke-dasharray="1 1"/>
+          <path d="M 50 50 L 30 76" stroke="#FF6B2B" stroke-width="0.35" stroke-dasharray="1 1"/>
+          <path d="M 50 50 L 70 76" stroke="#FF6B2B" stroke-width="0.35" stroke-dasharray="1 1"/>
+        </svg>
+
+        <div class="solution-label label-teacher">→ Personalised Learning Paths</div>
+        <div class="solution-label label-doctor">→ AI Triage Assistant</div>
+        <div class="solution-label label-banker">→ Fraud Detection Engine</div>
+        <div class="solution-label label-agent">→ Lead Scoring Model</div>
+        <div class="solution-label label-worker">→ Predictive Maintenance</div>
+
+        <div class="character-canvas">
+          
+          <!-- 1. Doctor (Healthcare) - Relieved -->
+          <div class="char-node node-doctor">
+            <img src="./assets/doctor_solution.png" alt="Healthcare AI Triage Solution">
+          </div>
+
+          <!-- 2. Banker (Finance) - Relieved -->
+          <div class="char-node node-banker">
+            <img src="./assets/banker_solution.png" alt="Finance Fraud Detection Solution">
+          </div>
+
+          <!-- 3. Teacher (Education) - Relieved -->
+          <div class="char-node node-teacher">
+            <img src="./assets/teacher_solution.png" alt="Education Personalised Pathways Solution">
+          </div>
+
+          <!-- 4. Real Estate Agent - Relieved -->
+          <div class="char-node node-agent">
+            <img src="./assets/agent_solution.png" alt="Real Estate Lead Scoring Solution">
+          </div>
+
+          <!-- 5. Factory Worker - Relieved -->
+          <div class="char-node node-worker">
+            <img src="./assets/worker_solution.png" alt="Manufacturing Predictive Maintenance Solution">
+          </div>
+
+          <!-- 6. THE CENTRAL AI CORE Centerpiece -->
+          <div class="char-node node-ai-core">
+            <img src="./assets/ai_core.png" alt="Futuristic Quantum Neural AI Core">
+          </div>
+        </div>
+
+        <div class="solution-cta-area">
+          <button class="btn-hero-cta" onclick="document.getElementById('use-cases').scrollIntoView();">
+            See How It Works <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ==========================================================================
+           SLIDE 1: PROBLEMS / "BEFORE" (TOP OVERLAY - CLIPPED ON PROGRESS - FLAT TECH ART)
+           ========================================================================= -->
+      <div class="slide slide-1" id="problemSlide">
+        <div class="character-canvas">
+          
+          <!-- 1. Doctor (Healthcare) - Stressed -->
+          <div class="char-node node-doctor">
+            <img src="./assets/doctor_problem.png" alt="Healthcare Data Backlog Problem">
+          </div>
+
+          <!-- 2. Banker (Finance) - Frazzled -->
+          <div class="char-node node-banker">
+            <img src="./assets/banker_problem.png" alt="Finance Fraud Slip Problem">
+          </div>
+
+          <!-- 3. Teacher (Education) - Exhausted -->
+          <div class="char-node node-teacher">
+            <img src="./assets/teacher_problem.png" alt="Education Classroom Time Loss Problem">
+          </div>
+
+          <!-- 4. Real Estate Agent - Stressed -->
+          <div class="char-node node-agent">
+            <img src="./assets/agent_problem.png" alt="Real Estate Dead Lead Problem">
+          </div>
+
+          <!-- 5. Factory Worker - Stressed -->
+          <div class="char-node node-worker">
+            <img src="./assets/worker_problem.png" alt="Manufacturing Breakdown Problem">
+          </div>
+        </div>
+
+        <!-- Before-state bubble container overlay (Solid White backings sit cleanly above organic blobs) -->
+        <div class="character-canvas">
+          <div class="char-node node-teacher">
+            <div class="speech-bubble bubble-teacher">"40 students. Zero time to personalise."</div>
+          </div>
+          <div class="char-node node-doctor">
+            <div class="speech-bubble bubble-doctor">"I'm buried in patient data I can't use."</div>
+          </div>
+          <div class="char-node node-banker">
+            <div class="speech-bubble bubble-banker">"Fraud slips through before I even see it."</div>
+          </div>
+          <div class="char-node node-agent">
+            <div class="speech-bubble bubble-agent">"Every lead feels like a dead end."</div>
+          </div>
+          <div class="char-node node-worker">
+            <div class="speech-bubble bubble-worker">"The machine breaks. I never see it coming."</div>
+          </div>
+        </div>
+
+        <button class="swipe-nudge" onclick="triggerWipeToSlide2()">
+          Swipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- ==========================================================================
+           SWIPE DIVIDER & DRAGGABLE HANDLE
+           ========================================================================== -->
+      <div class="swipe-divider" id="swipeDivider">
+        <div class="swipe-handle" id="swipeHandle" aria-label="Drag to compare slides">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8 7 L 3 12 L 8 17 M 16 7 L 21 12 L 16 17 M 11 5 L 11 19 M 13 5 L 13 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="compare-instruction">Move mouse horizontally to explore before / after</div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: USE CASE CARDS (PERFECT BALANCED STACK)
+       ========================================================================== -->
+  <section class="use-cases-section" id="use-cases">
+    <div class="container">
+      
+      <div class="section-intro">
+        <span class="section-tag">Case Studies</span>
+        <h2 class="section-title">Architecting results, one win at a time.</h2>
+        <p>Surgical AI engines engineered to save hours, secure bottom lines, and connect data pipelines.</p>
+      </div>
+
+      <div class="cards-stack-container" id="cardsStackContainer">
+        
+        <!-- CARD 1: HEALTHCARE -->
+        <div class="case-card">
+          <div class="card-meta">
+            <span class="card-number">01</span>
+            <span class="sector-pill">Healthcare</span>
+          </div>
+          <div>
+            <div class="card-metric">60% Backlog Cut</div>
+            <p class="card-story">Deployed an AI triage assistant for a Chennai-based hospital chain, converting chaotic records into structured, immediate priority diagnostics.</p>
+          </div>
+        </div>
+
+        <!-- CARD 2: FINANCE -->
+        <div class="case-card">
+          <div class="card-meta">
+            <span class="card-number">02</span>
+            <span class="sector-pill">Finance</span>
+          </div>
+          <div>
+            <div class="card-metric">₹2.3Cr Saved</div>
+            <p class="card-story">Automated transaction fraud detection engine for a regional bank, securing leaking entry points and locking safe vault checks in Q1.</p>
+          </div>
+        </div>
+
+        <!-- CARD 3: REAL ESTATE -->
+        <div class="case-card">
+          <div class="card-meta">
+            <span class="card-number">03</span>
+            <span class="sector-pill">Real Estate</span>
+          </div>
+          <div>
+            <div class="card-metric">3x Conversions</div>
+            <p class="card-story">Engineered an AI lead-scoring engine that built clean target qualification paths, tripling active sales conversions for property developers.</p>
+          </div>
+        </div>
+
+        <!-- CARD 4: MANUFACTURING -->
+        <div class="case-card">
+          <div class="card-meta">
+            <span class="card-number">04</span>
+            <span class="sector-pill">Manufacturing</span>
+          </div>
+          <div>
+            <div class="card-metric">40% Less Downtime</div>
+            <p class="card-story">Developed a predictive maintenance model tracking heavy machine telemetry sensors, preventing unscheduled breakdowns and steam shocks.</p>
+          </div>
+        </div>
+
+        <!-- CARD 5: EDUCATION -->
+        <div class="case-card">
+          <div class="card-meta">
+            <span class="card-number">05</span>
+            <span class="sector-pill">Education</span>
+          </div>
+          <div>
+            <div class="card-metric">12,000 Personalized Paths</div>
+            <p class="card-story">Deployed adaptive learning paths mapping individual student velocities, creating custom branching stars to scale classroom personalization.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: CONTACT (CLEAN & MODERN)
+       ========================================================================== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      
+      <div class="contact-grid">
+        
+        <!-- Contact titles & CTAs at the top -->
+        <div class="contact-info">
+          <span class="contact-tag">Let's build</span>
+          <h2 class="contact-title">
+            Architect your<br>
+            <span class="color-orange">intelligence.</span>
+          </h2>
+          <p class="contact-desc">We translate complex operational bottlenecks into custom, production-ready AI systems. Share your challenge and let's engineer a solution.</p>
+          
+          <div class="cta-button-group">
+            <button class="btn-filled" onclick="alert('Discovery call scheduling tool goes here. Feel free to submit the challenge form!');">Book a Free Discovery Call</button>
+            <button class="btn-outlined" onclick="alert('Request received. Submit the form below to receive a custom proof-of-concept sandbox.');">Request a Custom AI Demo</button>
+          </div>
+        </div>
+
+        <!-- Premium form below CTAs -->
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you. Our Solutions Architect will reach out in under 4 hours.'); this.reset();">
+          
+          <div class="form-group">
+            <label class="form-label" for="formName">Name</label>
+            <input class="form-input" id="formName" type="text" placeholder="Ada Lovelace" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="formCompany">Company</label>
+            <input class="form-input" id="formCompany" type="text" placeholder="Pixel Co." required>
+          </div>
+
+          <div class="form-group form-group-full">
+            <label class="form-label" for="formEmail">Email</label>
+            <input class="form-input" id="formEmail" type="email" placeholder="you@company.com" required>
+          </div>
+
+          <div class="form-group form-group-full">
+            <label class="form-label" for="formChallenge">What's your biggest challenge?</label>
+            <div class="form-select-wrapper">
+              <select class="form-select" id="formChallenge" required>
+                <option value="" disabled selected hidden>Pick one...</option>
+                <option value="healthcare">Healthcare data triage & scheduling backlog</option>
+                <option value="finance">Financial transaction audits & fraud leaking</option>
+                <option value="realestate">Real estate lead qualification & conversions</option>
+                <option value="manufacturing">Unplanned factory machine breakdowns & logs</option>
+                <option value="education">Educational personalisation at large scale</option>
+                <option value="other">Other operational bottlenecks</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <div class="form-footer form-group-full">
+            <span class="form-helper-text">No spam. No newsletters. Just a reply from a human.</span>
+            <button class="btn-submit" type="submit">
+              Send &rarr;
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer-area">
+        <div class="footer-text">
+          Pixel Tech &middot; Building intelligent systems for human problems.
+        </div>
+        <div class="footer-socials">
+          <a class="social-icon" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a class="social-icon" href="mailto:hello@pixeltech.com" aria-label="Email Us">
+            <svg viewBox="0 0 24 24">
+              <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 4.27v-8.54l4.623 4.27zm1.258 1.162l3.419 3.159c.197.182.453.272.71.272s.512-.09.709-.272l3.42-3.159 4.908 4.887h-18.074l4.908-4.887zm8.496-1.162l4.623-4.27v8.54l-4.623-4.27zm.623-4.929h-18v1.071l9 8.309 9-8.309v-1.071z"/>
+            </svg>
+          </a>
+        </div>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SCRIPTS & INTERACTIONS
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // ==========================================================================
+      // 1. CAROUSEL SWIPE WIPE INTERACTION LOGIC (HOVER + TOUCH SWIPE)
+      // ==========================================================================
+      const viewport = document.getElementById('swipeViewport');
+      const divider = document.getElementById('swipeDivider');
+      
+      let isDragging = false;
+      let currentProgress = 48; // initial comparison split screen layout
+
+      function updateWipe(progressPercent) {
+        currentProgress = Math.max(0, Math.min(100, progressPercent));
+        document.documentElement.style.setProperty('--swipe-progress', `${currentProgress}%`);
+      }
+
+      // A. Desktop Hover: Wiping screen smoothly follows mouse pointer horizontally
+      viewport.addEventListener('mousemove', (e) => {
+        if (isDragging) return;
+        
+        const rect = viewport.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const progressPercent = (mouseX / rect.width) * 100;
+        
+        updateWipe(progressPercent);
+      });
+
+      // B. Mobile Touch: Drag and Swipe support
+      function startDrag(e) {
+        isDragging = true;
+        viewport.classList.add('is-dragging');
+        viewport.classList.remove('transition-active');
+      }
+
+      function onDrag(e) {
+        if (!isDragging) return;
+        
+        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const rect = viewport.getBoundingClientRect();
+        const touchX = clientX - rect.left;
+        const progressPercent = (touchX / rect.width) * 100;
+        
+        updateWipe(progressPercent);
+      }
+
+      function stopDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        viewport.classList.remove('is-dragging');
+        viewport.classList.add('transition-active');
+        
+        // Snap settings at outer margins
+        if (currentProgress < 12) {
+          updateWipe(0);
+        } else if (currentProgress > 88) {
+          updateWipe(100);
+        }
+      }
+
+      viewport.addEventListener('touchstart', startDrag, { passive: true });
+      viewport.addEventListener('touchmove', onDrag, { passive: true });
+      window.addEventListener('touchend', stopDrag);
+
+      // Snap trigger via nudge button
+      window.triggerWipeToSlide2 = function() {
+        viewport.classList.add('transition-active');
+        updateWipe(0); // Wipe Slide 1 fully out of view to reveal Slide 2 (After)
+      };
+
+      // ==========================================================================
+      // 2. SCROLL CARD STACK DEPTH TRANSITIONS (BALANCED CARDS)
+      // ==========================================================================
+      const cards = document.querySelectorAll('.case-card');
+
+      window.addEventListener('scroll', () => {
+        cards.forEach((card, index) => {
+          const rect = card.getBoundingClientRect();
+          const cardTopRelative = rect.top;
+          
+          const targetStuckThreshold = 120 + (index * 20);
+          
+          if (cardTopRelative <= targetStuckThreshold + 10) {
+            const diff = targetStuckThreshold - cardTopRelative;
+            const progress = Math.min(1, Math.max(0, diff / 200));
+            
+            const scaleVal = 1 - (progress * 0.03);
+            const opacityVal = 1 - (progress * 0.15);
+            
+            card.style.transform = `scale(${scaleVal})`;
+            card.style.opacity = `${opacityVal}`;
+          } else {
+            card.style.transform = 'scale(1)';
+            card.style.opacity = '1';
+          }
+        });
+      });
+
+      viewport.addEventListener('transitionend', () => {
+        viewport.classList.remove('transition-active');
+      });
+
+    });
+  </script>
+</body>
+</html>
